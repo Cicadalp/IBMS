@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IBMSA - Our Services</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* GLOBAL STYLES (Copied from index.html) */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --color-primary: #007bff; /* Bright, professional blue */
+        --color-secondary: #f8f9fa; /* Light background */
+        --color-text: #2c3e50; /* Dark navy text */
+        --color-light-text: #7f8c8d; /* Subtle grey */
+        --font-main: "Poppins", sans-serif;
+        --box-shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.08);
+        --box-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+        /* Footer/Contact Colors */
+        --color-contact-bg: #e6f2ff;
+        --color-footer-dark: #212529;
+        --color-footer-text: #dcdcdc;
+      }
+
+      body {
+        font-family: var(--font-main);
+        color: var(--color-text);
+        line-height: 1.6;
+        background-color: #f4f7f9;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--color-text);
+        font-weight: 600;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Utility for fade-in animation */
+      .fade-in-element {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in-element.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* --- HEADER & NAVIGATION --- */
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .logo-text-blue {
+        color: var(--color-primary);
+      }
+
+      .logo-text-black {
+        color: var(--color-text);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--color-text);
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--color-primary);
+        transition: width 0.3s ease-out;
+      }
+
+      nav a:hover,
+      nav a.active {
+        color: var(--color-primary);
+      }
+
+      nav a.active::after,
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      /* --- HERO BANNER (Page Specific) --- */
+      .page-hero {
+        background: linear-gradient(135deg, #e0efff 0%, #c4e1ff 100%);
+        padding: 5rem 0 3rem;
+        text-align: center;
+      }
+
+      .page-hero h1 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+        color: var(--color-text);
+      }
+
+      .page-hero p {
+        font-size: 1.15rem;
+        color: var(--color-light-text);
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* --- GENERAL SECTION STYLING --- */
+      section {
+        padding: 5rem 2rem;
+        background-color: #fff;
+      }
+
+      .industries {
+        background-color: #f4f7f9;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        position: relative;
+      }
+
+      h2::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: var(--color-primary);
+        margin: 10px auto 40px;
+        border-radius: 2px;
+      }
+
+      /* --- SERVICES (Accordion) (Migrated from index.html) --- */
+      .accordion {
+        max-width: 900px;
+        margin: 0 auto;
+        border: none;
+        box-shadow: var(--box-shadow-soft);
+        border-radius: 8px;
+      }
+
+      .accordion-header {
+        padding: 1.5rem 2rem;
+        background-color: #fff;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .accordion-header:hover {
+        background-color: #f7f7f7;
+      }
+
+      .accordion-item:last-child .accordion-header {
+        border-bottom: none;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      .accordion-item:first-child .accordion-header {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      .accordion-item.active .accordion-header {
+        background-color: var(--color-primary);
+        color: white;
+        border-bottom: 1px solid #0056b3;
+      }
+
+      .accordion-item.active .accordion-title,
+      .accordion-item.active .accordion-icon {
+        color: white;
+      }
+
+      .accordion-title {
+        color: var(--color-text);
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+
+      .accordion-icon {
+        color: var(--color-primary);
+        font-size: 1.5rem;
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+
+      .accordion-item.active .accordion-icon {
+        transform: rotate(45deg);
+      }
+
+      .accordion-content {
+        padding: 2rem;
+        border-left: 5px solid var(--color-primary);
+        background-color: #fff;
+        color: var(--color-light-text);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        line-height: 1.8;
+      }
+
+      .accordion-content h5 {
+        color: var(--color-text);
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      /* --- INDUSTRIES WE SERVE (Migrated from index.html) --- */
+      .industries-intro {
+        text-align: center;
+        font-size: 1rem;
+        color: var(--color-light-text);
+        margin-bottom: 4rem;
+        line-height: 1.8;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .industries-highlight {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #fff;
+        border-left: 5px solid var(--color-primary);
+        border-radius: 4px;
+        box-shadow: var(--box-shadow-soft);
+      }
+
+      .industries-highlight h4 {
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+      }
+
+      .industries-highlight p {
+        color: var(--color-light-text);
+      }
+
+      /* --- CONTACT BAR (Copied from index.html) --- */
+      .contact-bar {
+        background-color: var(--color-contact-bg);
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .contact-bar h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .contact-bar h2::after {
+        display: none;
+      }
+
+      .contact-details {
+        display: flex;
+        justify-content: center;
+        gap: 5rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .contact-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .contact-icon {
+        font-size: 3rem;
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+      }
+
+      .contact-label {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--color-light-text);
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-link {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--color-text);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .contact-link:hover {
+        color: var(--color-primary);
+      }
+
+      /* --- FOOTER (Copied from index.html) --- */
+      footer {
+        background-color: var(--color-footer-dark);
+        color: var(--color-footer-text);
+        padding: 4rem 0;
+        font-size: 0.95rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 2fr;
+        gap: 2rem;
+        text-align: left;
+      }
+
+      .footer-bottom {
+        background-color: #1a1a1a;
+        padding: 1rem 0;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #7f8c8d;
+      }
+
+      .footer-col h4 {
+        color: #fff;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+      }
+
+      .footer-col p {
+        color: var(--color-footer-text);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-links a {
+        color: var(--color-footer-text);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--color-primary);
+      }
+
+      .link-icon {
+        color: var(--color-primary);
+        margin-right: 8px;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--color-footer-text);
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .social-icon:hover {
+        background-color: var(--color-primary);
+        color: white;
+      }
+
+      /* --- RESPONSIVE DESIGN --- */
+      @media (max-width: 992px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+        .contact-details {
+          flex-direction: column;
+          gap: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-container container">
+        <div class="logo">
+          <span class="logo-text-blue">IBM</span
+          ><span class="logo-text-black">SA</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="school.html">School</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="container fade-in-element">
+        <h1>Our Full Range of Professional Services</h1>
+        <p>
+          From strategic vision to hands-on implementation, IBMSA provides
+          clear, actionable services to drive sustainable growth and business
+          transformation.
+        </p>
+      </div>
+    </section>
+
+    <section class="services" id="services-main">
+      <div class="container">
+        <h2 class="fade-in-element">How We Can Help Your Business</h2>
+
+        <div class="accordion fade-in-element">
+          <div class="accordion-item active">
+            <div class="accordion-header">
+              <span class="accordion-title"
+                >Strategic Planning & Business Turnaround</span
+              >
+              <span class="accordion-icon">−</span>
+            </div>
+            <div class="accordion-content">
+              <p>
+                We help businesses create clear plans for growth and Sustainable
+                long-term success. If your business is under pressure, we work
+                with you to identify the root causes and quickly create an
+                action plan to fix it. We walk with you from problem to solution
+                with practical, step-by-step guidance.
+              </p>
+              <h5>Why It Works:</h5>
+              <p>
+                We take the time to truly understand where your business is now
+                and where it needs to go. Our process is collaborative and built
+                for real-world challenges By working together closely.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span class="accordion-title">Business Development & Growth</span>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <p>
+                We help you attract more customers, grow your revenue, and
+                expand into new markets. From Improving your sales pitch, to
+                helping you develop the capabilities to win tenders and secure
+                contracts. We focus on growth that lasts. Our support includes
+                marketing strategies, help you create systems for customer
+                retention, and tools to scale your business effectively.
+              </p>
+              <h5>Why It Works:</h5>
+              <p>
+                We only use methods that are proven to work in the real world.
+                Every strategy we recommend is tailored to your business and
+                market. Most importantly, we stay engaged to ensure your growth
+                plans deliver actual results—not just promises.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span class="accordion-title">Coaching & Mentoring</span>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <p>
+                We provide business owners and their teams with one-on-one or
+                group support to grow their capabilities,skills and confidence
+                in decision-making. Whether you’re new to business or leading a
+                large team, our coaching helps you find clarity, stay motivated,
+                and build resilience. We share tools, ideas, and real
+                experiences to help you move forward with purpose and Confidence
+              </p>
+              <h5>Why It Works:</h5>
+              <p>
+                We meet you where you’re at, offering guidance that’s easy to
+                follow and deeply supportive anf tailored to your needs Our
+                coaching is personal, practical, and built on trust. It is
+                universally accepted that small businesses consistently grow
+                faster and make better decisions with a mentor by their side.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span class="accordion-title">Business Turnaround</span>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <p>
+                We start a business turnaround process with a deep dive and
+                review of the company’s current performance, identifying the key
+                issues causing decline—such as poor cash flow, weak leadership,
+                challenges in the market place, or limitations of staff skills
+                or technology disruptions in the industry value chain Clear
+                priorities are set, and an action plan is created to fix the
+                problems quickly and sustainably. This may include improving
+                operations, expanding customer base, reducing costs, stabilizing
+                finances, and aligning the team with new goals. We help roll out
+                the plan with, hands-on support, and regular monitoring to keep
+                the business on track.
+              </p>
+              <h5>Why It Works:</h5>
+              <p>
+                It works because it focuses on real issues and delivers
+                practical solutions fast. With experienced guidance, the
+                business gets immediate support where it’s needed most. Most
+                importantly, turnaround success depends on action—not just
+                coaching and training —making the change visible and measurable.
+              </p>
+              
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span class="accordion-title">Digital & Technology Support</span>
+              <span class="accordion-icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <p>
+                We guide businesses through choosing and using digital tools
+                that make work easier and more efficient. We design, build and
+                host business Management Software to clients specifications as
+                well as basic systems like payroll and invoicing to more complex
+                platforms Such as CRMs or business intelligence tools, we help
+                you match tech to your needs. We provide Coaching, and
+                handholding so you and your team feel confident using new
+                systems.
+              </p>
+              <h5>Why It Works:</h5>
+              <p>
+                Technology should serve your business—not frustrate it. We keep
+                things simple, explaining each system in plain language and
+                walking you through setup and use. The result is smoother
+                operations, better insights, and more time for you to focus on
+                what matters.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="industries" id="industries">
+      <div class="container">
+        <h2 class="fade-in-element">Industries We Serve</h2>
+        <p class="industries-intro fade-in-element">
+          We work across a broad range of sectors, including **trades,
+          hospitality, farming, retail, education, health and small
+          businesses**. Our flexibility allows us to help you adapt to confront
+          the specific challenges as well as help you prepare for the
+          opportunities within your field. We understand both local businesses
+          and those looking to expand nationally or internationally
+        </p>
+
+        <div class="industries-highlight fade-in-element">
+          <h4>Why it matters:</h4>
+          <p>
+            No matter your industry, we take the time to understand its unique
+            environment. We don't apply one-size-fits-all solutions—we listen,
+            learn, and tailor our support accordingly. This ensures every
+            strategy fits your reality and your goals.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-bar">
+      <h2 class="fade-in-element">
+        Ready to start your business growth journey?
+      </h2>
+
+      <div class="contact-details fade-in-element">
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <span class="contact-label">Have any questions?</span>
+          <a href="mailto:info@ibmsa.com.au" class="contact-link"
+            >info@ibmsa.com.au</a
+          >
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">💬</span>
+          <span class="contact-label">Call us</span>
+          <a href="tel:+61436674317" class="contact-link">+61 (0) 436 674317</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <h4>About US</h4>
+            <p>
+              IBMSA mission and primary purpose is to deliver **strategic
+              planning, business development, turnaround, coaching, digital
+              marketing, and IT support services** to clients big or small.
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Useful Links</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="about.html"
+                  ><span class="link-icon">✓</span> About Us</a
+                >
+              </li>
+              <li>
+                <a href="services.html"
+                  ><span class="link-icon">★</span> Our Services</a
+                >
+              </li>
+              <li>
+                <a href="contact.html"
+                  ><span class="link-icon">★</span> Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Have any questions?</h4>
+            <p>
+              We're here to help. Reach out today and let's discuss how we can
+              support your business goals:
+            </p>
+
+            <div class="social-icons">
+              <a href="#" class="social-icon">f</a>
+              <a href="#" class="social-icon">G+</a>
+              <a href="#" class="social-icon">t</a>
+              <a href="#" class="social-icon">v</a>
+              <a href="#" class="social-icon">▶</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">© 2025 IBMSA. All Rights Reserved.</div>
+      </div>
+    </footer>
+
+    <script>
+      // --- ACCORDION LOGIC (Migrated) ---
+      const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+      accordionHeaders.forEach((header, index) => {
+        header.addEventListener("click", function () {
+          const accordionItem = this.parentElement;
+          const content = accordionItem.querySelector(".accordion-content");
+
+          // Close other open items
+          document
+            .querySelectorAll(".accordion-item")
+            .forEach((item, itemIndex) => {
+              if (itemIndex !== index) {
+                item.classList.remove("active");
+                item.querySelector(".accordion-content").style.maxHeight = null;
+                item.querySelector(".accordion-icon").textContent = "+";
+              }
+            });
+
+          // Toggle current item
+          accordionItem.classList.toggle("active");
+          if (accordionItem.classList.contains("active")) {
+            // Set max-height to scrollHeight plus a small buffer
+            content.style.maxHeight = content.scrollHeight + 30 + "px";
+            this.querySelector(".accordion-icon").textContent = "−";
+          } else {
+            content.style.maxHeight = null;
+            this.querySelector(".accordion-icon").textContent = "+";
+          }
+        });
+      });
+
+      // Initial setup for the first accordion item
+      const firstAccordionItem = document.querySelector(
+        ".accordion-item.active"
+      );
+      if (firstAccordionItem) {
+        const firstContent =
+          firstAccordionItem.querySelector(".accordion-content");
+        // Use setTimeout to ensure scrollHeight is calculated after rendering
+        setTimeout(() => {
+          firstContent.style.maxHeight = firstContent.scrollHeight + 30 + "px";
+        }, 0);
+      }
+
+      // --- ANIMATION LOGIC (Migrated) ---
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          rootMargin: "0px 0px -10% 0px",
+          threshold: 0.1,
+        }
+      );
+
+      document.querySelectorAll(".fade-in-element").forEach((element) => {
+        observer.observe(element);
+      });
+
+      document.querySelector(".page-hero .container").classList.add("visible");
+    </script>
+  </body>
+</html>

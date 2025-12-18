@@ -1,0 +1,1 @@
+- [x] Add new contact information to contact.html: IBMS Business Consultants address and Strategic Planning email

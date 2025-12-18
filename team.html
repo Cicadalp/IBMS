@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBMSA - The Difference (Our Team)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* GLOBAL STYLES (Copied for consistency) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #007bff; /* Bright, professional blue */
+            --color-secondary: #f8f9fa; /* Light background */
+            --color-text: #2c3e50; /* Dark navy text */
+            --color-light-text: #7f8c8d; /* Subtle grey */
+            --font-main: 'Poppins', sans-serif;
+            --box-shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --box-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+            /* Footer/Contact Colors */
+            --color-contact-bg: #e6f2ff;
+            --color-footer-dark: #212529;
+            --color-footer-text: #dcdcdc;
+            --color-tertiary: #17a2b8;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: #f4f7f9;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Utility for fade-in animation */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .logo-text-blue {
+            color: var(--color-primary);
+        }
+
+        .logo-text-black {
+            color: var(--color-text);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--color-primary);
+            transition: width 0.3s ease-out;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--color-primary);
+        }
+        
+        nav a.active::after, nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO BANNER (Page Specific) --- */
+        .page-hero {
+            background: linear-gradient(135deg, #f0f0ff 0%, #d4e3ff 100%);
+            padding: 5rem 0 3rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+        
+        .page-hero p {
+            font-size: 1.15rem;
+            color: var(--color-light-text);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- GENERAL SECTION STYLING --- */
+        section {
+            padding: 5rem 2rem;
+            background-color: #fff;
+        }
+        
+        .team-section {
+            background-color: var(--color-secondary);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--color-primary);
+            margin: 10px auto 40px;
+            border-radius: 2px;
+        }
+        
+        /* --- TEAM PROFILE (Focused Leader) --- */
+        .leader-profile {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto 5rem;
+            padding: 3rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .leader-photo-container {
+            flex-shrink: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--color-secondary);
+            border: 6px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .leader-photo-container span {
+            font-size: 6rem;
+            color: var(--color-light-text);
+        }
+        
+        .leader-details h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+        
+        .leader-details .role {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--color-text);
+            display: block;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .leader-details p {
+            margin-bottom: 1.5rem;
+            color: var(--color-light-text);
+        }
+        
+        .leader-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .leader-details ul li {
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .list-icon {
+            color: var(--color-tertiary);
+            font-size: 1.2rem;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        /* --- IBMSA CORE VALUES (Copied for consistency) --- */
+        .values-section {
+            padding-top: 2rem;
+            padding-bottom: 5rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .value-item {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow-soft);
+            border-left: 5px solid var(--color-primary);
+        }
+        
+        .value-item h4 {
+            color: var(--color-text);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .value-item p {
+            color: var(--color-light-text);
+            font-size: 0.95rem;
+        }
+
+        /* --- THE IBMSA DIFFERENCE (Core Strengths) --- */
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .difference-item {
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .difference-item:hover {
+            background-color: var(--color-secondary);
+        }
+        
+        .difference-icon {
+            font-size: 2.5rem;
+            color: var(--color-tertiary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .difference-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .difference-item p {
+            font-size: 0.9rem;
+            color: var(--color-light-text);
+        }
+
+
+        /* --- CONTACT BAR (Copied for consistency) --- */
+        .contact-bar {
+            background-color: var(--color-contact-bg);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .contact-bar h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-bar h2::after {
+            display: none;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-light-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-link {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--color-primary);
+        }
+
+        /* --- FOOTER (Copied for consistency) --- */
+        footer {
+            background-color: var(--color-footer-dark);
+            color: var(--color-footer-text);
+            padding: 4rem 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr;
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .footer-bottom {
+            background-color: #1a1a1a;
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-col p {
+            color: var(--color-footer-text);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--color-footer-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .link-icon {
+            color: var(--color-primary);
+            margin-right: 8px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-footer-text);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            .contact-details {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .leader-profile {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+        }
+
+        /* Accomplishment text styling */
+        .accomplishment-text {
+            color: #FFFF00;
+            font-style: italic;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #FFFF00;
+            }
+            to {
+                text-shadow: 0 0 20px #FFFF00, 0 0 30px #FFFF00;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container container">
+            <div class="logo">
+                <span class="logo-text-blue">IBM</span><span class="logo-text-black">SA</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="school.html">School</a></li>
+                    <li><a href="team.html" class="active">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-hero">
+        <div class="container fade-in-element">
+            <h1>The IBMSA TEAM</h1>
+            <p>Our competitive advantage lies in our people, led by visionary expertise and grounded in a commitment to local success.</p>
+        </div>
+    </section>
+
+    <section class="team-section" id="team">
+        <div class="container">
+            <h2 class="fade-in-element">Meet Our Visionary Leadership</h2>
+            
+            <div class="leader-profile fade-in-element">
+                
+                <div class="leader-photo-container">
+                    <span>👤</span>
+                </div>
+                
+                <div class="leader-details">
+                    <h3>Rebecca Rudd-Morfaw</h3>
+                    <span class="role">Community Development Specialist</span>
+
+                    <p class="accomplishment-text">Established basketball development programs across 3 states, creating pathways for 500+ regional athletes while supporting Indigenous business operations.</p>
+
+                    <p>Rebecca Rudd-Morfaw is a highly respected professional with a strong track record in sports development, office administration, and community support. She is the initiator and founding member of the National Sports Academy Inc., dedicated to delivering high-quality basketball training and sports leadership development across regional Victoria and South Australia.</p>
+
+                    <h4>Key Areas of Accountability</h4>
+                    <ul>
+                        <li><span class="list-icon">✅</span> Not-for-profit management and sports program development</li>
+                        <li><span class="list-icon">✅</span> Indigenous business support in outback communities</li>
+                        <li><span class="list-icon">✅</span> RTO compliance and administrative systems</li>
+                        <li><span class="list-icon">✅</span> Community Impact: Established basketball training programs reaching athletes in Mildura, Wimmera, and Adelaide regions, creating pathways for youth development through sports.</li>
+                    </ul>
+                </div>
+
+            
+        </div>
+        <div class="leader-profile fade-in-element">
+                
+                <div class="leader-photo-container">
+                    <span>👤</span>
+                </div>
+                
+                <div class="leader-details">
+                    <h3>Richard Morfaw</h3>
+                    <span class="role">Business Turnaround Specialist</span>
+                    
+                    <p>Richard is a seasoned leader in international and community development with a Diploma of Project Management and an MBA in progress at Deakin University. With experience spanning Australia, Africa, and Papua New Guinea, he specializes in:</p>
+                    <h4>Key Areas of Accountability.</h4>
+                    <ul>
+                        <li><span class="list-icon">✅</span> Business turnaround strategies for struggling SMEs</li>
+                        <li><span class="list-icon">✅</span> Government tender consulting for regional businesses</li>
+                        <li><span class="list-icon">✅</span> Indigenous business development programs</li>
+                        <li><span class="list-icon">✅</span> Key Achievement: Transformed Sunraysia Institute of TAFE into one of Victoria's most successful institutional turnarounds.</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="leader-profile fade-in-element">
+                
+                <div class="leader-photo-container">
+                    <span>👤</span>
+                </div>
+                
+                <div class="leader-details">
+                    <h3>Jefkin Nkaka</h3>
+                    <span class="role">Digital Marketing Expert</span>
+
+                    <p class="accomplishment-text">Trained 200+ professionals in digital marketing strategies that increased client visibility by an average of 300%.</p>
+
+                    <p>Jefkin Nkaka is a dynamic multimedia journalist and digital marketing lecturer with expertise in web development, graphic design and strategic communications.</p>
+                    <h4>Key Areas of Accountability</h4>
+                    <ul>
+                        <li><span class="list-icon">✅</span> Digital marketing strategy development for SMEs</li>
+                        <li><span class="list-icon">✅</span> WordPress website development and training</li>
+                        <li><span class="list-icon">✅</span> Corporate storytelling through visual media</li>
+                        <li><span class="list-icon">✅</span> Educational Role: Currently lectures in digital marketing and web development, equipping students with practical skills for the evolving digital landscape.</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="leader-profile fade-in-element">
+                
+                <div class="leader-photo-container">
+                    <span>👤</span>
+                </div>
+                
+                <div class="leader-details">
+                    <h3>Natalie Rubens</h3>
+                    <span class="role">Graphic Design & Marketing Specialist</span>
+
+                    <p class="accomplishment-text">Bringing city-quality design to regional businesses through comprehensive branding, strategic marketing, and hands-on business training – all with Mildura's personal touch.</p>
+
+                    <p>Natalie Rubens is the creative force behind De Luxe Creative, a vibrant graphic design and marketing agency based in Mildura. With qualifications including a Bachelor in Graphic Design, Diploma of Business Management, and Training and Assessment certification, she brings both artistic vision and strategic business acumen to our network.</p>
+                    <h4>Key Areas of Accountability</h4>
+                    <ul>
+                        <li><span class="list-icon">✅</span> Brand development and comprehensive visual identity systems</li>
+                        <li><span class="list-icon">✅</span> Digital marketing strategies tailored for regional businesses</li>
+                        <li><span class="list-icon">✅</span> Print production with specialty finishes and branded merchandise</li>
+                        <li><span class="list-icon">✅</span> Business training programs in web management and digital marketing.</li>
+                        <li>Corporate Experience: Formerly worked with major Australian brands including Silvan Australia, Crown Melbourne, and Target Head Office, bringing big-business insights to regional clients.</li>
+                        <li>Local Impact: Combines her Mildura roots with metropolitan experience to deliver city-quality design with country-friendly service and pricing.</li>
+                    </ul>
+                </div>
+
+            </div>
+    </section>
+
+    <hr>
+    
+    <section class="values-section">
+        <div class="container">
+            <h2 class="fade-in-element">Our Core Values</h2>
+            <div class="values-grid fade-in-element">
+                <div class="value-item">
+                    <h4>Commitment to Local Success</h4>
+                    <p>We are dedicated to building capacity within regional Australia, ensuring long-term self-sufficiency for every client.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Integrity and Transparency</h4>
+                    <p>We maintain the highest ethical standards in all consulting, financial advice, and project management engagements.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Innovative Problem Solving</h4>
+                    <p>We leverage modern technology and strategic thinking to deliver creative solutions to complex business challenges.</p>
+                </div>
+                <div class="value-item">
+                    <h4>Partnership Driven</h4>
+                    <p>We work *with* our clients, fostering a collaborative environment where knowledge is shared and growth is mutual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="difference-section" id="methodology">
+        <div class="container">
+            <h2 class="fade-in-element">Our Proven Methodology</h2>
+            
+            <div class="difference-grid">
+                
+                <div class="difference-item fade-in-element">
+                    <span class="difference-icon">🎯</span>
+                    <h4>Needs Assessment</h4>
+                    <p>Thorough analysis of current operations, financial health, and digital footprint to define precise objectives.</p>
+                </div>
+                
+                <div class="difference-item fade-in-element" style="transition-delay: 0.1s;">
+                    <span class="difference-icon">🛠️</span>
+                    <h4>Tailored Solutions</h4>
+                    <p>Development of a customized strategic roadmap, integrating business, IT, and marketing components seamlessly.</p>
+                </div>
+                
+                <div class="difference-item fade-in-element" style="transition-delay: 0.2s;">
+                    <span class="difference-icon">🚀</span>
+                    <h4>Implementation & Support</h4>
+                    <p>Hands-on execution of the plan, coupled with continuous training and dedicated IT support during the transition phase.</p>
+                </div>
+                
+                <div class="difference-item fade-in-element" style="transition-delay: 0.3s;">
+                    <span class="difference-icon">📈</span>
+                    <h4>Review & Sustainment</h4>
+                    <p>Post-implementation review and capacity transfer to ensure all improvements are measurable and sustainable long-term.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-bar">
+        <h2 class="fade-in-element">Ready to experience the IBMSA Difference?</h2>
+        
+        <div class="contact-details fade-in-element">
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <span class="contact-label">Have any questions?</span>
+                <a href="mailto:info@ibmsa.com.au" class="contact-link">info@ibmsa.com.au</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">💬</span>
+                <span class="contact-label">Call us</span>
+                <a href="tel:+61436674317" class="contact-link">+61 (0) 436 674317</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                
+                <div class="footer-col">
+                    <h4>About US</h4>
+                    <p>IBMSA mission and primary purpose is to deliver **strategic planning, business development, turnaround, coaching, digital marketing, and IT support services** to clients big or small.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Useful Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><span class="link-icon">✓</span> About Us</a></li>
+                        <li><a href="services.html"><span class="link-icon">★</span> Our Services</a></li>
+                        <li><a href="contact.html"><span class="link-icon">★</span> Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Have any questions?</h4>
+                    <p>We're here to help. Reach out today and let's discuss how we can support your business goals:</p>
+                    
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">G+</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">v</a>
+                        <a href="#" class="social-icon">▶</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                © 2025 IBMSA. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- ANIMATION LOGIC (Copied for consistency) ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            rootMargin: '0px 0px -10% 0px',
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.fade-in-element').forEach(element => {
+            observer.observe(element);
+        });
+
+        document.querySelector('.page-hero .container').classList.add('visible');
+    </script>
+</body>
+</html>
+```

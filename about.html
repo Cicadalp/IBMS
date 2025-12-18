@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBMSA - About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* GLOBAL RESET & TYPOGRAPHY */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #007bff; /* Bright, professional blue */
+            --color-secondary: #f8f9fa; /* Light background */
+            --color-text: #2c3e50; /* Dark navy text */
+            --color-light-text: #7f8c8d; /* Subtle grey */
+            --font-main: 'Poppins', sans-serif;
+            --box-shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --box-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+            /* Footer/Contact Colors */
+            --color-contact-bg: #e6f2ff;
+            --color-footer-dark: #212529;
+            --color-footer-text: #dcdcdc;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: #f4f7f9;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Utility for fade-in animation */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .logo-text-blue {
+            color: var(--color-primary);
+        }
+
+        .logo-text-black {
+            color: var(--color-text);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--color-primary);
+            transition: width 0.3s ease-out;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--color-primary);
+        }
+        
+        nav a.active::after, nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO BANNER (Page Specific) --- */
+        .page-hero {
+            background: linear-gradient(135deg, #e0efff 0%, #c4e1ff 100%);
+            padding: 5rem 0 3rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+        
+        .page-hero p {
+            font-size: 1.15rem;
+            color: var(--color-light-text);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- GENERAL SECTION STYLING --- */
+        section {
+            padding: 5rem 2rem;
+            background-color: #fff;
+        }
+        
+        .about-us, .team, .contact-bar {
+            background-color: #f4f7f9;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--color-primary);
+            margin: 10px auto 40px;
+            border-radius: 2px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow-soft);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        /* --- WHO WE ARE SECTION (ib5.png) --- */
+        .about-intro {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--color-light-text);
+            margin-bottom: 4rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card h4 {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-card .card-description {
+            font-size: 0.95rem;
+            color: var(--color-light-text);
+            line-height: 1.7;
+        }
+
+        /* --- TEAM SECTION (ib6.png) --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .member-image {
+            width: 150px;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            border: 5px solid var(--color-primary);
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .team-member .member-image::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 123, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .team-member h3.member-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-member p.member-title {
+            color: var(--color-primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .member-bio, .member-expertise p, .member-expertise ul li {
+            font-size: 0.95rem;
+            color: var(--color-light-text);
+            text-align: left;
+        }
+        
+        .member-expertise {
+            margin-top: 1rem;
+            text-align: left;
+        }
+        
+        .member-expertise h4 {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            margin-top: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .member-expertise ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .member-expertise ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-expertise ul li::before {
+            content: '•';
+            color: var(--color-primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* --- IBMSA Difference (ib7.png) --- */
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .difference-card h4 {
+            color: var(--color-primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .difference-card p {
+            color: var(--color-light-text);
+        }
+
+        /* --- CONTACT BAR (Copied from original) --- */
+        .contact-bar {
+            background-color: var(--color-contact-bg);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .contact-bar h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-bar h2::after {
+            display: none;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-light-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-link {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--color-primary);
+        }
+
+        /* --- FOOTER (Copied from original) --- */
+        footer {
+            background-color: var(--color-footer-dark);
+            color: var(--color-footer-text);
+            padding: 4rem 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr;
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .footer-bottom {
+            background-color: #1a1a1a;
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-col p {
+            color: var(--color-footer-text);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--color-footer-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .link-icon {
+            color: var(--color-primary);
+            margin-right: 8px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-footer-text);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+        
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            .contact-details {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+             .team-grid {
+                 grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container container">
+            <div class="logo">
+                <span class="logo-text-blue">IBM</span><span class="logo-text-black">SA</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="school.html">School</a></li>
+                     <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-hero">
+        <div class="container fade-in-element">
+            <h1>About IBMSA</h1>
+            <p>International Business Management Services Australia (IBMSA) is committed to helping your business achieve its fullest potential.</p>
+        </div>
+    </section>
+
+    <section class="about-us" id="who-we-are">
+        <div class="container">
+            <h2 class="fade-in-element">Who We Are</h2>
+            <p class="about-intro fade-in-element">
+                By 2035 IBMS will be recognized internationally as a world class management consulting firm specialising in strategic planning, business development, merger and acquisitions with offices in Australia, North America, Africa, Asia and the Middle East. The organisation would have extended its current AI technology club into a training organisation with AI enabled software engineers who develop, create, and customise business management applications for clients in our industries of focus.
+            </p>
+            
+            <div class="mission-vision-grid fade-in-element">
+                <div class="card value-card">
+                    <h4 class="fade-in-element">Our Mission</h4>
+                    <p class="card-description">
+                        To deliver strategic planning, business development, turnaround, coaching, digital marketing, and IT support services to clients big or small, driving sustainable growth and transformation.
+                    </p>
+                </div>
+                <div class="card value-card">
+                    <h4 class="fade-in-element">Our Vision</h4>
+                    <p class="card-description">
+                        To be a recognized world-class management consulting firm specializing in strategic planning, business development, and M&A, powered by advanced technology and a global presence.
+                    </p>
+                </div>
+                <div class="card value-card">
+                    <h4 class="fade-in-element">Core Values</h4>
+                    <p class="card-description">
+                        Integrity, Innovation, Collaboration, and Client Success. We believe in transparency and building long-term, trusted partnerships.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <div class="container">
+            <h2 class="fade-in-element">Meet Our Specialists</h2>
+            
+            <div class="team-grid">
+                <div class="team-member card fade-in-element">
+                    <div class="member-image" data-text="Rebecca Image" style="background-image: url('https://via.placeholder.com/150/007bff/FFFFFF?text=Rebecca');">
+                        
+                    </div>
+                    <h3 class="member-name">Rebecca Rudd-Morfaw</h3>
+                    <p class="member-title">Sports Business & Administration Specialist</p>
+                    <p class="member-bio">Rebecca is a highly respected professional with a strong track record in **sports development**, office administration, and community support. She is the initiator and founding member of the National Sports Academy Inc.</p>
+                    <div class="member-expertise">
+                        <h4>Expertise Highlights:</h4>
+                        <ul>
+                            <li>**Not-for-profit management** and sports program development</li>
+                            <li>**Indigenous business support** in outback communities</li>
+                            <li>**RTO compliance** and administrative systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="team-member card fade-in-element" style="transition-delay: 0.15s;">
+                    <div class="member-image" data-text="Richard Image" style="background-image: url('https://via.placeholder.com/150/007bff/FFFFFF?text=Richard');">
+                        
+                    </div>
+                    <h3 class="member-name">Richard Morfaw</h3>
+                    <p class="member-title">MBA, Business Turnaround Expert (Mildura, VIC)</p>
+                    <p class="member-bio">Richard is a seasoned leader in International and community development with an MBA in progress. He specializes in business turnaround, government tender consulting, and Indigenous business development.</p>
+                    <div class="member-expertise">
+                        <h4>Key Focus Areas:</h4>
+                        <ul>
+                            <li>**Business turnaround strategies** for struggling SMEs</li>
+                            <li>**Government tender consulting** for regional businesses</li>
+                            <li>**Indigenous business development** programs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="difference" id="difference">
+        <div class="container">
+            <h2 class="fade-in-element">The IBMSA Difference</h2>
+            
+            <div class="difference-grid fade-in-element">
+                <div class="difference-card card">
+                    <h4>Real-World, Practical Solutions</h4>
+                    <p>We go beyond theory, focusing on actionable strategies that deliver measurable results and sustainable outcomes for your business.</p>
+                </div>
+                <div class="difference-card card">
+                    <h4>Highly Experienced & Approachable</h4>
+                    <p>Our consultants are seasoned experts but maintain a friendly, transparent, and easy-to-work-with demeanor, ensuring clear collaboration.</p>
+                </div>
+                <div class="difference-card card">
+                    <h4>Hands-On Partnership</h4>
+                    <p>We don't just create plans and leave. We stay actively involved throughout the implementation process, ensuring successful execution and long-term success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-bar">
+        <h2 class="fade-in-element">Stay in touch with us</h2>
+        
+        <div class="contact-details fade-in-element">
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <span class="contact-label">Have any questions?</span>
+                <a href="mailto:info@ibmsa.com.au" class="contact-link">info@ibmsa.com.au</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">💬</span>
+                <span class="contact-label">Call us</span>
+                <a href="tel:+61436674317" class="contact-link">+61 (0) 436 674317</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                
+                <div class="footer-col">
+                    <h4>About US</h4>
+                    <p>IBMSA mission and primary purpose is to deliver **strategic planning, business development, turnaround, coaching, digital marketing, and IT support services** to clients big or small.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Useful Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><span class="link-icon">✓</span> About Us</a></li>
+                        <li><a href="services.html"><span class="link-icon">★</span> Our Services</a></li>
+                        <li><a href="contact.html"><span class="link-icon">★</span> Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Have any questions?</h4>
+                    <p>We're here to help. Reach out today and let's discuss how we can support your business goals:</p>
+                    
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">G+</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">v</a>
+                        <a href="#" class="social-icon">▶</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                © 2025 IBMSA. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Placeholder JavaScript for fade-in animation and smooth scrolling (using generic page links)
+        document.querySelectorAll('a[href]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // For performance on a finished page, we keep unobserve
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            rootMargin: '0px 0px -10% 0px',
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.fade-in-element').forEach(element => {
+            observer.observe(element);
+        });
+
+        document.querySelector('.page-hero .container').classList.add('visible');
+
+    </script>
+</body>
+</html>
