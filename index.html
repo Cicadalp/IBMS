@@ -323,6 +323,14 @@
             text-align: center;
         }
 
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         .image-placeholder {
             width: 80px;
             height: 80px;
@@ -807,7 +815,7 @@
         <div class="container">
             <h2 class="fade-in-element">Our Clients</h2>
 
-            <div class="clients-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+            <div class="clients-grid">
                 <div class="client-item fade-in-element" style="text-align: center;">
                     <span class="client-icon">🏛️</span>
                     <span class="client-name">Government departments</span>
