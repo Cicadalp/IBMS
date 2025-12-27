@@ -72,19 +72,32 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
             font-size: 2rem;
             font-weight: 700;
         }
-        
+
         .logo-text-blue {
             color: var(--color-primary);
         }
 
         .logo-text-black {
             color: var(--color-text);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text);
+            transition: color 0.3s ease;
+        }
+
+        .hamburger:hover {
+            color: var(--color-primary);
         }
 
         nav ul {
@@ -116,16 +129,56 @@
         nav a:hover, nav a.active {
             color: var(--color-primary);
         }
-        
+
         nav a.active::after, nav a:hover::after {
             width: 100%;
         }
 
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 8px 8px;
+            }
+
+            nav ul.mobile-menu {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 0.5rem 0;
+            }
+        }
+
         /* --- HERO BANNER (Page Specific) --- */
         .page-hero {
-            background: linear-gradient(135deg, #e0efff 0%, #c4e1ff 100%);
+            background: linear-gradient(135deg, rgba(224, 239, 255, 0.8) 0%, rgba(196, 225, 255, 0.8) 100%), url('business-partners-closing-deal_74855-1153.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             padding: 5rem 0 3rem;
             text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
         }
 
         .page-hero h1 {
@@ -214,9 +267,13 @@
 
         /* --- EDUCATION FOCUS --- */
         .client-focus {
-            padding-bottom: 6rem;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            padding: 6rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: var(--box-shadow-soft);
         }
-        
+
         .focus-content {
             display: flex;
             gap: 3rem;
@@ -228,49 +285,74 @@
         .focus-text, .focus-list {
             flex: 1;
         }
-        
+
         .focus-text h3 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
+            color: var(--color-primary);
+            font-weight: 700;
         }
-        
+
         .focus-text p {
-            color: var(--color-light-text);
-            margin-bottom: 1rem;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
         }
 
         .focus-list {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: var(--box-shadow-soft);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--box-shadow-hover);
             border-top: 5px solid var(--color-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .focus-list::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
         }
 
         .focus-list h4 {
             color: var(--color-primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
 
         .focus-list ul {
             list-style: none;
+            padding: 0;
         }
 
         .focus-list ul li {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-weight: 500;
             color: var(--color-text);
             display: flex;
             align-items: flex-start;
-            line-height: 1.4;
+            line-height: 1.6;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+        }
+
+        .focus-list ul li:last-child {
+            border-bottom: none;
         }
 
         .list-icon {
-            color: var(--color-primary); /* Blue color for consistency */
-            font-size: 1.2rem;
-            margin-right: 10px;
-            margin-top: 3px;
+            color: var(--color-primary);
+            font-size: 1.3rem;
+            margin-right: 15px;
+            margin-top: 2px;
+            flex-shrink: 0;
         }
 
         /* --- UPCOMING PROGRAMS (New Section Style) --- */
@@ -472,10 +554,11 @@
 <body>
     <header>
         <div class="header-container container">
-            <div class="logo">
-                <span class="logo-text-blue">IBM</span><span class="logo-text-black">SA</span>
-            </div>
-            <nav>
+        <div class="logo">
+            <span class="logo-text-blue">IBM</span><span class="logo-text-black">SA</span>
+        </div>
+        <div class="hamburger">☰</div>
+        <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
@@ -513,12 +596,12 @@
                         <span class="client-icon">🤝</span>
                         <span class="client-name">Aboriginal-Owned Businesses</span>
                     </div>
+                </div>
+                <div class="clients-row">
                     <div class="client-item fade-in-element" style="transition-delay: 0.3s;">
                         <span class="client-icon">🚀</span>
                         <span class="client-name">Startups & Emerging Businesses</span>
                     </div>
-                </div>
-                <div class="clients-row" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 800px;">
                     <div class="client-item fade-in-element" style="transition-delay: 0.4s;">
                         <span class="client-icon">🗺️</span>
                         <span class="client-name">Businesses in Regional & Remote Areas</span>
@@ -539,7 +622,7 @@
             <div class="focus-content">
                 <div class="focus-text fade-in-element">
                     <h3>Empowering the next generation of leaders and organizations.</h3>
-                    <p>Our expertise extends deeply into the **education sector**, Registered Training Organizations (**RTOs**), community sports programs, and various not-for-profit bodies. We believe in providing the administrative and strategic foundations needed for these institutions to thrive.</p>
+                    <p>Our expertise extends deeply into the education sector, Registered Training Organizations (RTOs), community sports programs, and various not-for-profit bodies. We believe in providing the administrative and strategic foundations needed for these institutions to thrive.</p>
                     <p>We provide tailored solutions that address the unique challenges of educational and community governance, including funding compliance, strategic planning for enrollment and growth, and operational efficiency.</p>
                     <p>This dedication to capacity building ensures our partners can focus on their core mission: educating, supporting, and developing their communities.</p>
                 </div>
@@ -547,11 +630,11 @@
                 <div class="focus-list fade-in-element" style="transition-delay: 0.2s;">
                     <h4>How We Support Educational Clients</h4>
                     <ul>
-                        <li><span class="list-icon">✅</span> **Strategic Funding Applications:** Assistance with securing government and private grants.</li>
-                        <li><span class="list-icon">✅</span> **Governance and Compliance:** Ensuring administrative processes meet regulatory standards (e.g., RTO compliance).</li>
-                        <li><span class="list-icon">✅</span> **Digital Infrastructure:** Implementation and support for student management and IT systems.</li>
-                        <li><span class="list-icon">✅</span> **Curriculum & Program Planning:** Strategic advice on developing effective, relevant training programs.</li>
-                        <li><span class="list-icon">✅</span> **Capacity Building:** Mentoring leadership and administrative staff for long-term sustainability.</li>
+                        <li><span class="list-icon">✅</span> Strategic Funding Applications: Assistance with securing government and private grants.</li>
+                        <li><span class="list-icon">✅</span> Governance and Compliance: Ensuring administrative processes meet regulatory standards (e.g., RTO compliance).</li>
+                        <li><span class="list-icon">✅</span> Digital Infrastructure: Implementation and support for student management and IT systems.</li>
+                        <li><span class="list-icon">✅</span> Curriculum & Program Planning: Strategic advice on developing effective, relevant training programs.</li>
+                        <li><span class="list-icon">✅</span> Capacity Building: Mentoring leadership and administrative staff for long-term sustainability.</li>
                     </ul>
                 </div>
             </div>
@@ -606,7 +689,7 @@
                 
                 <div class="footer-col">
                     <h4>About US</h4>
-                    <p>IBMSA mission and primary purpose is to deliver **strategic planning, business development, turnaround, coaching, digital marketing, and IT support services** to clients big or small.</p>
+                    <p>IBMSA mission and primary purpose is to deliver strategic planning, business development, turnaround, coaching, digital marketing, and IT support services to clients big or small.</p>
                 </div>
                 
                 <div class="footer-col">
@@ -658,7 +741,31 @@
             observer.observe(element);
         });
 
-        document.querySelector('.page-hero .container').classList.add('visible');
+        setTimeout(() => {
+            document.querySelector('.page-hero .container').classList.add('visible');
+        }, 1000);
+
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navUl = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navUl.classList.toggle('mobile-menu');
+        });
+
+        // Close menu when a link is clicked
+        navUl.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navUl.classList.remove('mobile-menu');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navUl.contains(e.target)) {
+                navUl.classList.remove('mobile-menu');
+            }
+        });
     </script>
 </body>
 </html>

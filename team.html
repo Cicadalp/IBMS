@@ -121,11 +121,63 @@
             width: 100%;
         }
 
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text);
+            transition: color 0.3s ease;
+        }
+
+        .hamburger:hover {
+            color: var(--color-primary);
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 8px 8px;
+            }
+
+            nav ul.mobile-menu {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 0.5rem 0;
+            }
+        }
+
         /* --- HERO BANNER (Page Specific) --- */
         .page-hero {
-            background: linear-gradient(135deg, #f0f0ff 0%, #d4e3ff 100%);
-            padding: 5rem 0 3rem;
+            background: linear-gradient(135deg, rgba(240, 240, 255, 0.8) 0%, rgba(212, 227, 255, 0.8) 100%), url('istockphoto-1490901300-612x612.jpg');
+            background-size: cover;
+            background-position: left;
+            background-repeat: no-repeat;
+            padding: 3rem 0 2rem;
             text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
         }
 
         .page-hero h1 {
@@ -297,6 +349,19 @@
             font-size: 2.5rem;
             color: var(--color-tertiary);
             margin-bottom: 0.75rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
         
         .difference-item h4 {
@@ -486,10 +551,11 @@
 <body>
     <header>
         <div class="header-container container">
-            <div class="logo">
-                <span class="logo-text-blue">IBM</span><span class="logo-text-black">SA</span>
-            </div>
-            <nav>
+        <div class="logo">
+            <span class="logo-text-blue">IBM</span><span class="logo-text-black">SA</span>
+        </div>
+        <div class="hamburger">☰</div>
+        <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
@@ -694,7 +760,7 @@
                 
                 <div class="footer-col">
                     <h4>About US</h4>
-                    <p>IBMSA mission and primary purpose is to deliver **strategic planning, business development, turnaround, coaching, digital marketing, and IT support services** to clients big or small.</p>
+                    <p>IBMSA mission and primary purpose is to deliver strategic planning, business development, turnaround, coaching, digital marketing, and IT support services to clients big or small.</p>
                 </div>
                 
                 <div class="footer-col">
@@ -747,6 +813,28 @@
         });
 
         document.querySelector('.page-hero .container').classList.add('visible');
+
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navUl = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navUl.classList.toggle('mobile-menu');
+        });
+
+        // Close menu when a link is clicked
+        navUl.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navUl.classList.remove('mobile-menu');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navUl.contains(e.target)) {
+                navUl.classList.remove('mobile-menu');
+            }
+        });
     </script>
 </body>
 </html>

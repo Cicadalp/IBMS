@@ -71,19 +71,32 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
             font-size: 2rem;
             font-weight: 700;
         }
-        
+
         .logo-text-blue {
             color: var(--color-primary);
         }
 
         .logo-text-black {
             color: var(--color-text);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text);
+            transition: color 0.3s ease;
+        }
+
+        .hamburger:hover {
+            color: var(--color-primary);
         }
 
         nav ul {
@@ -115,9 +128,44 @@
         nav a:hover, nav a.active {
             color: var(--color-primary);
         }
-        
+
         nav a.active::after, nav a:hover::after {
             width: 100%;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 8px 8px;
+            }
+
+            nav ul.mobile-menu {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 0.5rem 0;
+            }
         }
 
         /* --- HERO BANNER (Page Specific) --- */
@@ -125,6 +173,8 @@
             background: linear-gradient(135deg, #e0efff 0%, #c4e1ff 100%);
             padding: 5rem 0 3rem;
             text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
         }
 
         .page-hero h1 {
@@ -174,6 +224,18 @@
             box-shadow: var(--box-shadow-soft);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
         }
         
         .card:hover {
@@ -481,10 +543,11 @@
 <body>
     <header>
         <div class="header-container container">
-            <div class="logo">
-                <span class="logo-text-blue">IBM</span><span class="logo-text-black">SA</span>
-            </div>
-            <nav>
+        <div class="logo">
+            <span class="logo-text-blue">IBM</span><span class="logo-text-black">SA</span>
+        </div>
+        <div class="hamburger">☰</div>
+        <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html" class="active">About</a></li>
@@ -506,26 +569,26 @@
 
     <section class="about-us" id="who-we-are">
         <div class="container">
-            <h2 class="fade-in-element">Who We Are</h2>
+            <h2 class="fade-in-element"><span class="section-icon">👥</span> Who We Are</h2>
             <p class="about-intro fade-in-element">
                 By 2035 IBMS will be recognized internationally as a world class management consulting firm specialising in strategic planning, business development, merger and acquisitions with offices in Australia, North America, Africa, Asia and the Middle East. The organisation would have extended its current AI technology club into a training organisation with AI enabled software engineers who develop, create, and customise business management applications for clients in our industries of focus.
             </p>
             
             <div class="mission-vision-grid fade-in-element">
                 <div class="card value-card">
-                    <h4 class="fade-in-element">Our Mission</h4>
+                    <h4 class="fade-in-element"><span class="card-icon">🎯</span> Our Mission</h4>
                     <p class="card-description">
                         To deliver strategic planning, business development, turnaround, coaching, digital marketing, and IT support services to clients big or small, driving sustainable growth and transformation.
                     </p>
                 </div>
                 <div class="card value-card">
-                    <h4 class="fade-in-element">Our Vision</h4>
+                    <h4 class="fade-in-element"><span class="card-icon">👁️</span> Our Vision</h4>
                     <p class="card-description">
                         To be a recognized world-class management consulting firm specializing in strategic planning, business development, and M&A, powered by advanced technology and a global presence.
                     </p>
                 </div>
                 <div class="card value-card">
-                    <h4 class="fade-in-element">Core Values</h4>
+                    <h4 class="fade-in-element"><span class="card-icon">💎</span> Core Values</h4>
                     <p class="card-description">
                         Integrity, Innovation, Collaboration, and Client Success. We believe in transparency and building long-term, trusted partnerships.
                     </p>
@@ -540,24 +603,24 @@
             
             <div class="team-grid">
                 <div class="team-member card fade-in-element">
-                    <div class="member-image" data-text="Rebecca Image" style="background-image: url('https://via.placeholder.com/150/007bff/FFFFFF?text=Rebecca');">
+                    <div class="member-image" data-text="👤" style="background-image: url('https://via.placeholder.com/150/007bff/FFFFFF?text=Rebecca');">
                         
                     </div>
                     <h3 class="member-name">Rebecca Rudd-Morfaw</h3>
                     <p class="member-title">Sports Business & Administration Specialist</p>
-                    <p class="member-bio">Rebecca is a highly respected professional with a strong track record in **sports development**, office administration, and community support. She is the initiator and founding member of the National Sports Academy Inc.</p>
+                    <p class="member-bio">Rebecca is a highly respected professional with a strong track record in sports development, office administration, and community support. She is the initiator and founding member of the National Sports Academy Inc.</p>
                     <div class="member-expertise">
                         <h4>Expertise Highlights:</h4>
                         <ul>
-                            <li>**Not-for-profit management** and sports program development</li>
-                            <li>**Indigenous business support** in outback communities</li>
-                            <li>**RTO compliance** and administrative systems</li>
+                            <li>Not-for-profit management and sports program development</li>
+                            <li>Indigenous business support in outback communities</li>
+                            <li>RTO compliance and administrative systems</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="team-member card fade-in-element" style="transition-delay: 0.15s;">
-                    <div class="member-image" data-text="Richard Image" style="background-image: url('https://via.placeholder.com/150/007bff/FFFFFF?text=Richard');">
+                    <div class="member-image" data-text="👤" style="background-image: url('https://via.placeholder.com/150/007bff/FFFFFF?text=Richard');">
                         
                     </div>
                     <h3 class="member-name">Richard Morfaw</h3>
@@ -566,9 +629,9 @@
                     <div class="member-expertise">
                         <h4>Key Focus Areas:</h4>
                         <ul>
-                            <li>**Business turnaround strategies** for struggling SMEs</li>
-                            <li>**Government tender consulting** for regional businesses</li>
-                            <li>**Indigenous business development** programs</li>
+                            <li>Business turnaround strategies for struggling SMEs</li>
+                            <li>Government tender consulting for regional businesses</li>
+                            <li>Indigenous business development programs</li>
                         </ul>
                     </div>
                 </div>
@@ -620,7 +683,7 @@
                 
                 <div class="footer-col">
                     <h4>About US</h4>
-                    <p>IBMSA mission and primary purpose is to deliver **strategic planning, business development, turnaround, coaching, digital marketing, and IT support services** to clients big or small.</p>
+                    <p>IBMSA mission and primary purpose is to deliver strategic planning, business development, turnaround, coaching, digital marketing, and IT support services to clients big or small.</p>
                 </div>
                 
                 <div class="footer-col">
@@ -691,6 +754,27 @@
 
         document.querySelector('.page-hero .container').classList.add('visible');
 
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navUl = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navUl.classList.toggle('mobile-menu');
+        });
+
+        // Close menu when a link is clicked
+        navUl.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navUl.classList.remove('mobile-menu');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navUl.contains(e.target)) {
+                navUl.classList.remove('mobile-menu');
+            }
+        });
     </script>
 </body>
 </html>

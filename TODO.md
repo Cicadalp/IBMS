@@ -1,1 +1,11 @@
-- [x] Add new contact information to contact.html: IBMS Business Consultants address and Strategic Planning email
+- [x] Update .page-hero in about.html to add border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
+- [x] Update .page-hero in contact.html to change border-bottom-left-radius from 16px to 20px; border-bottom-right-radius from 16px to 20px;
+- [x] Update .page-hero in school.html to change border-bottom-left-radius from 16px to 20px; border-bottom-right-radius from 16px to 20px;
+- [x] Update .page-hero in services.html to add border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
+- [x] Verify team.html already has border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
+- [x] Add mobile navigation menu to index.html
+- [x] Add mobile navigation menu to about.html
+- [x] Add mobile navigation menu to services.html
+- [x] Add mobile navigation menu to school.html
+- [x] Add mobile navigation menu to team.html
+- [x] Add mobile navigation menu to contact.html
