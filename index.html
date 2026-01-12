@@ -51,6 +51,12 @@
             margin: 0 auto;
             padding: 0 2rem;
         }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 1rem;
+            }
+        }
         
         /* Utility for fade-in animation */
         .fade-in-element {
@@ -204,12 +210,44 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .industries {
+                padding: 2.5rem 0;
+            }
+            .industries h2 {
+                font-size: 1.8rem;
+            }
+            .industries-intro {
+                font-size: 0.95rem;
+            }
+        }
+
         @media (max-width: 600px) {
             .industry-list {
                 grid-template-columns: 1fr;
+                gap: 0.8rem;
             }
             .industry-item {
-                padding: 1.5rem 1rem;
+                padding: 1rem 0.9rem;
+                gap: 0.7rem;
+            }
+            .industry-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+            }
+            .industry-name {
+                font-size: 0.9rem;
+            }
+            .industries-highlight {
+                padding: 1rem;
+                margin-top: 1rem;
+            }
+            .industries-highlight h4 {
+                font-size: 1rem;
+            }
+            .industries-highlight p {
+                font-size: 0.9rem;
             }
         }
 
@@ -264,12 +302,22 @@
             }
             .service-card {
                 padding: 1rem;
+                gap: 0.7rem;
+            }
+            .service-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
             }
             .service-card h4 {
                 font-size: 0.9rem;
             }
             .service-card p {
                 font-size: 0.85rem;
+            }
+            .service-learn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
             }
         }
 
@@ -605,6 +653,24 @@
             margin-top: 1.5rem;
         }
 
+        @media (max-width: 768px) {
+            .diff-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .diff-stats {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            .diff-stat {
+                padding: 0.9rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
         .diff-stat {
             background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
             padding: 1.1rem 1.2rem;
@@ -629,6 +695,30 @@
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.8rem;
             margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .difference-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .difference-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .difference-card {
+                padding: 1.2rem;
+            }
+            .difference-card h4 {
+                font-size: 1rem;
+                margin-bottom: 0.6rem;
+            }
+            .difference-card p {
+                font-size: 0.9rem;
+            }
         }
 
         .difference-card {
@@ -705,6 +795,38 @@
             max-width: 700px;
             margin: 1rem auto;
             line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .work-together {
+                padding: 2.5rem 1rem;
+            }
+            .work-together h2 {
+                font-size: 2rem;
+            }
+            .work-together p {
+                font-size: 0.95rem;
+            }
+            .work-cta {
+                padding: 0.9rem 1.4rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .work-together {
+                padding: 2rem 1rem;
+            }
+            .work-together h2 {
+                font-size: 1.6rem;
+            }
+            .work-together p {
+                font-size: 0.9rem;
+            }
+            .work-cta {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
         }
 
         .work-cta {
@@ -968,6 +1090,8 @@
             line-height: 1.2;
             animation: slideUp 0.9s cubic-bezier(.2,.9,.2,1) forwards;
             opacity: 0;
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes slideUp {
@@ -977,9 +1101,10 @@
 
         .hero-content p {
             font-size: 1.15rem;
-            color: var(--color-light-text);
+            color: #ffffff;
             margin-bottom: 2.5rem;
             line-height: 1.8;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
         }
 
         .cta-button {
@@ -1048,6 +1173,12 @@
             padding: 5rem 2rem;
             background-color: #fff;
         }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 3rem 1rem;
+            }
+        }
         
         .about, .clients, .why-choose, .team { /* Added .team */
             background-color: #f4f7f9;
@@ -1068,6 +1199,17 @@
             background: var(--color-primary);
             margin: 10px auto 40px;
             border-radius: 2px;
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+            }
+            h2::after {
+                width: 50px;
+                margin: 8px auto 30px;
+            }
         }
 
         .about-intro {
@@ -1417,6 +1559,35 @@
             margin-top: 2rem;
         }
 
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .team-member {
+                padding: 1.5rem;
+            }
+            .member-image {
+                width: 120px;
+                height: 120px;
+                border-width: 4px;
+                margin-bottom: 1rem;
+            }
+            .team-member h3.member-name {
+                font-size: 1.3rem;
+            }
+            .member-bio, .member-expertise p {
+                font-size: 0.9rem;
+            }
+        }
+
         .team-member {
             text-align: center;
             padding: 2rem;
@@ -1527,6 +1698,18 @@
             cursor: pointer; /* Added for accordion */
             transition: background-color 0.25s cubic-bezier(.2,.9,.2,1), transform 0.25s cubic-bezier(.2,.9,.2,1);
         }
+
+        @media (max-width: 600px) {
+            .accordion-header {
+                padding: 1.2rem 1rem;
+            }
+            .accordion-title {
+                font-size: 0.95rem;
+            }
+            .accordion-icon {
+                font-size: 1.3rem;
+            }
+        }
         
         .accordion-header:hover {
             background-color: #f7f7f7;
@@ -1571,6 +1754,17 @@
             transition: max-height 0.45s cubic-bezier(.2,.9,.2,1), opacity 0.45s ease;
         }
 
+        @media (max-width: 600px) {
+            .accordion-content {
+                padding: 1.2rem;
+                border-left-width: 4px;
+            }
+            .accordion-content p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+        }
+
         .accordion-item.active .accordion-content {
             max-height: 800px; /* generous allowance */
             opacity: 1;
@@ -1597,6 +1791,26 @@
             gap: 5rem;
             max-width: 800px;
             margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .contact-bar {
+                padding: 2.5rem 1rem;
+            }
+            .contact-bar h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            .contact-details {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .contact-icon {
+                font-size: 2.5rem;
+            }
+            .contact-link {
+                font-size: 1rem;
+            }
         }
 
         .contact-item {
@@ -1644,6 +1858,23 @@
             grid-template-columns: 2fr 1fr 2fr;
             gap: 2rem;
             text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            .footer-col h4 {
+                margin-bottom: 1rem;
+            }
+            .footer-links {
+                margin-top: 0.5rem;
+            }
+            .social-icons {
+                justify-content: center;
+            }
         }
         
         .footer-bottom {
