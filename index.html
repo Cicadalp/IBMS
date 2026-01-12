@@ -941,6 +941,8 @@
             cursor: pointer;
             color: var(--color-text);
             transition: color 0.3s ease;
+            position: absolute;
+            right: 2rem;
         }
 
         .hamburger:hover {
@@ -1018,7 +1020,7 @@
 
         /* --- HERO SECTION (Enhanced with animations) --- */
         .hero {
-            background: url('mr2.jpg') no-repeat center center;
+            background: url('images/mr2.jpg') no-repeat center center;
             background-size: cover;
             padding: 6rem 2rem;
             min-height: 650px;
@@ -2062,13 +2064,13 @@
                 
                 <div class="carousel-container fade-in-element" style="margin-top: 40px;">
                     <div class="carousel-wrapper">
-                        <div class="carousel-card active" style="background-image: url('mission.jpg'); background-size: cover; background-position: center;">
+                        <div class="carousel-card active" style="background-image: url('images/mission.jpg'); background-size: cover; background-position: center;">
                             <div class="carousel-card-overlay"></div>
                             <div class="carousel-card-number">1</div>
                             <h4>Our Mission</h4>
                             <p>Our mission and primary purpose is to deliver strategic planning, business development, turnaround, coaching, digital marketing and IT support services to clients big or small.</p>
                         </div>
-                        <div class="carousel-card" style="background-image: url('vision.jpg'); background-size: cover; background-position: center;">
+                        <div class="carousel-card" style="background-image: url('images/vision.jpg'); background-size: cover; background-position: center;">
                             <div class="carousel-card-overlay"></div>
                             <div class="carousel-card-number">2</div>
                             <h4>Our Vision</h4>
@@ -2370,6 +2372,7 @@
     <section class="team" id="team">
         <div class="container">
             <h2 class="fade-in-element">Meet Our Specialists</h2>
+            <p class="fade-in-element" style="text-align: center; color: var(--color-light-text); font-size: 1.05rem; margin: 1rem 0 2rem 0; max-width: 800px; margin-left: auto; margin-right: auto;">Meet our team of experienced consultants dedicated to driving your business forward. View our full team to learn more about each specialist's expertise.</p>
             
             <div class="team-grid">
                 <div class="team-member fade-in-element">
@@ -2395,6 +2398,12 @@
                         <a href="#" class="small-btn">Contact</a>
                     </div>
                 </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="team.html" class="work-cta fade-in-element" style="display: inline-flex;">
+                    View Full Team →
+                </a>
             </div>
         </div>
     </section>
